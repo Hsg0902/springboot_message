@@ -24,7 +24,6 @@
                     "pwd": $("#pwd").val(),
                     "code": $("#code").val()
                 },function (data) {
-                    alert(data);
                     if (data.info == "success") {
                         window.location = "${pageContext.request.contextPath}/main.jsp";
                         //msg.do?param=queryAllMsgs&pageSize=5&pageNo=1
@@ -63,7 +62,7 @@
     </dl>
     <div class="buttons">
         <input class="btn-login png" type="button" name="submit" value=" "/>
-        <a href="register.jsp"><input class="btn-reg png" type="button" name="register" value=" "/></a>
+        <a href="${pageContext.request.contextPath}/register.jsp"><input class="btn-reg png" type="button" name="register" value=" "/></a>
     </div>
     <%--</form>--%>
 </div>

@@ -30,12 +30,20 @@ public class UserController {
     @GetMapping("/queryAllUsers/{sendId}")
     public ModelAndView queryAllUsers(@PathVariable("sendId") String sendId) throws Exception{
         ModelAndView mv = new ModelAndView("newMsg");
-        if(sendId!="a"){
-            //回信的时候有数据
-            mv.addObject("sendId",sendId);
-        }
+        System.out.println(sendId);
+        mv.addObject("sendId",sendId);
         List<User> uList = userService.getAllUsers();
         mv.addObject("uList",uList);
         return mv;
+    }
+
+    @GetMapping("/queryAllUsers")
+    public ModelAndView queryAllUsers() throws Exception{
+        ModelAndView mv = new ModelAndView("newMsg");
+        mv.addObject("sendId",1);
+        List<User> uList = userService.getAllUsers();
+        mv.addObject("uList",uList);
+        return mv;
+
     }
 }

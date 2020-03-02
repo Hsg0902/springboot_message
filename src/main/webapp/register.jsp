@@ -16,7 +16,7 @@
             $("#register").click(function () {
                 if (validate()) {
                     //提交
-                    $.post("/register", {
+                    $.get("/register", {
                         "name": $("#name").val(),
                         "pwd": $("#pwd").val(),
                         "email": $("#email").val()

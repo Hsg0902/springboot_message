@@ -3,11 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hwua.mapper.MessageMapper">
-    <select id="queryMessageByLoginUser" resultType="message">
-        select id,sendid,title,msgcontent,state,receiveid,msg_create_date from messages where receiveid=#{loginid} order by msg_create_date desc
-    </select>
-
-    <select id="queryMessageByLoginUser2" resultType="message">
+    <select id="queryMessageByLoginUser" resultMap="msgMap">
         select id,sendid,title,msgcontent,state,receiveid,msg_create_date from messages where receiveid=#{loginid} order by msg_create_date desc
     </select>
 

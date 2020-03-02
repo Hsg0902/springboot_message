@@ -15,8 +15,7 @@
         $(function () {
 
             $("#btn_send").click(function () {
-                $.post("${pageContext.request.contextPath}/msg.do", {
-                    "param": "sendMsg",
+                $.post("${pageContext.request.contextPath}/send", {
                     "toUser": $("#toUser").val(),
                     "title": $("#title").val(),
                     "content": $("#content").val()

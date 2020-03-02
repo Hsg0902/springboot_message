@@ -16,5 +16,5 @@ public interface UserMapper {
 
     public User queryUserBySendid(Long sendid) throws Exception;; //查询发送者用户信息
 
-    public String queryUserByName(String name) throws Exception;;//判断用户名是否已经注册
+    public User queryUserByName(String name) throws Exception;;//判断用户名是否已经注册
 }

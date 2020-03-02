@@ -60,8 +60,8 @@ mybatis:
   mapper-locations: classpath:com/hwua/mapper/*.xml
   type-aliases-package: com.hwua.pojo
   configuration:
-    #    lazy-loading-enabled: true
-    #    aggressive-lazy-loading: false
+    # lazy-loading-enabled: true
+    # aggressive-lazy-loading: false
     map-underscore-to-camel-case: true
 
 pagehelper:

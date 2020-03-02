@@ -20,11 +20,7 @@
         //查询短消息的函数
         function showMsgs(pageNo, pageSize) {
             //发送ajax请求
-            $.post("${pageContext.request.contextPath}/msg.do", {
-                "param": "queryAllMsgs",
-                "pageNo": pageNo,
-                "pageSize": pageSize
-            }, function (data) {
+            $.get("${pageContext.request.contextPath}/queryAllMsgs/" + pageNo + "/" + pageSize, function (data) {
                 //此代码要使用jquery进行拼接
                 var $ul = $(".messageList > ul");// 找到ul元素
                 $ul.empty();// 清空ul元素中的内容
@@ -72,7 +68,7 @@
          * @param id
          */
         function showMsgById(id) {
-            window.location = "${pageContext.request.contextPath}/msg.do?param=showMsgById&id=" + id;
+            window.location = "${pageContext.request.contextPath}/queryMsgById/" + id;
         }
 
         /**
@@ -82,9 +78,9 @@
          */
         function delMsgById(id) {
             //提示是否确定删除
-            alertify.confirm("是否確定刪除?",
+            alertify.confirm("是否确定刪除?",
                 function () {
-                    $.get("${pageContext.request.contextPath}/msg.do", {"param": "delMsg", "id": id}, function (data) {
+                    $.post("${pageContext.request.contextPath}/delMsg/" + id, {_method:"delete"}, function (data) {
                        if(data=="success"){
                            window.location="${pageContext.request.contextPath}/main.jsp";
                        }
@@ -93,7 +89,7 @@
                 },
                 function () {
                     alertify.error('取消');
-                }).set('labels', {ok: '确认', cancel: '删除'}).set('reverseButtons', true);
+                }).set('labels', {ok: '确认', cancel: '取消'}).set('reverseButtons', true);
             return false;//阻止超链接的默认行为
         }
 

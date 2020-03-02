@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -18,7 +19,8 @@ public class LoginRegisterController {
     private IUserService userService;
 
     @GetMapping("/login")
-    public Map<String, Object> login(User user, String code, HttpSession session, Map<String, Object> map){
+    public Map<String, Object> login(User user, String code, HttpSession session){
+        Map<String, Object> map = new HashMap<>();
         String vcode = (String) session.getAttribute("code");//生成的验证码
         session.removeAttribute("code");//删除先前生成的验证码,因为验证码只能用一次
         if (vcode == null || !vcode.equals(code)) {
@@ -51,7 +53,8 @@ public class LoginRegisterController {
     }
 
     @PostMapping("/register")
-    public Map<String, Object> register(User user, Map<String, Object> map){
+    public Map<String, Object> register(User user){
+        Map<String, Object> map = new HashMap<>();
         try {
             boolean flag = userService.register(user);//调用业务方法
             if (flag) {
@@ -63,6 +66,7 @@ public class LoginRegisterController {
             map.put("info", "注册失败");
             e.printStackTrace();
         }
+        System.out.println(map);
         return map;
     }
 
@@ -70,6 +74,7 @@ public class LoginRegisterController {
     public String queryByUser(@PathVariable("name") String name) throws Exception{
         System.out.println(name);
         boolean flag = userService.queryUserByName(name);
+        System.out.println(flag);
         return flag + "";
     }
 }

@@ -44,6 +44,7 @@ public class MessageController {
     @ResponseBody
     public String delMsg(@PathVariable("id") String id) throws Exception {
         int res = msgService.deleteMsgById(Integer.parseInt(id));
+        System.out.println(res);
         if (res > 0) {
             return "success";
         }
@@ -61,6 +62,7 @@ public class MessageController {
         Message msg = new Message(sendid, title, content, state, toUser, msg_create_date);
         int res = msgService.sendMessage(msg);
         String str = res > 0 ? "success" : "failure";
+
         return str;
     }
 
