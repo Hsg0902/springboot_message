@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwua.mapper.UserMapper">
+
+    <sql id="user_column">
+        id,name,pwd,email
+    </sql>
+    <select id="queryUserByUser" resultType="user">
+        select <include refid="user_column"></include> from users where name=#{name} and pwd=#{pwd}
+    </select>
+
+    <insert id="saveUser" useGeneratedKeys="true" keyProperty="id">
+        insert into users values(null,#{name},#{pwd},#{email})
+    </insert>
+
+    <select id="queryAllUsers" resultType="user">
+        select <include refid="user_column"></include> from users
+    </select>
+
+    <select id="queryUserBySendid" resultType="user">
+        select <include refid="user_column"></include> from users where id=#{id}
+    </select>
+
+    <select id="queryUserByName" resultType="user">
+        select <include refid="user_column"></include> from users where name=#{name}
+    </select>
+</mapper>
