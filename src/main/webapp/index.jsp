@@ -24,6 +24,7 @@
                     "pwd": $("#pwd").val(),
                     "code": $("#code").val()
                 },function (data) {
+                    alert(data);
                     if (data.info == "success") {
                         window.location = "${pageContext.request.contextPath}/main.jsp";
                         //msg.do?param=queryAllMsgs&pageSize=5&pageNo=1

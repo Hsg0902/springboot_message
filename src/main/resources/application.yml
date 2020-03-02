@@ -6,6 +6,7 @@ spring:
     view:
       prefix: /
       suffix: .jsp
+
   datasource:
     username: root
     password: 123456
@@ -54,16 +55,15 @@ spring:
         # 忽略过滤格式
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
-
 mybatis:
   #  config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:com/hwua/mapper/*.xml
   type-aliases-package: com.hwua.pojo
   configuration:
-#    lazy-loading-enabled: true
-#    aggressive-lazy-loading: false
+    #    lazy-loading-enabled: true
+    #    aggressive-lazy-loading: false
     map-underscore-to-camel-case: true
 
 pagehelper:
-  auto-dialect: mysql
   reasonable: true
+  auto-dialect: mysql

@@ -46,6 +46,7 @@ public class LoginRegisterController {
                 e.printStackTrace();
             }
         }
+        System.out.println(map);
         return map;
     }
 
